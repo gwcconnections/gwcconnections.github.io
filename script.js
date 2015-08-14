@@ -1,4 +1,3 @@
-var stamp;
 
 function addContact() {
 //makeNewHistory
@@ -42,7 +41,7 @@ function addContact() {
 	var news = document.createTextNode("Connection Type");
 	//create the menu for options
 	var newMenu = document.createElement("select");
-	newMenu.setAttribute("id","options");	
+	newMenu.id = name+"options2";
 	newMenu.setAttribute("data-theme","a");	
 	//create call option and text node
 	var newCall = document.createElement("option");
@@ -61,7 +60,10 @@ function addContact() {
 	newButton.setAttribute("type","button");	
 	newButton.setAttribute("value","Submit");	
 	newButton.setAttribute("data-theme","a");
-	newButton.setAttribute("onClick","updateHistory()");
+	
+	//make a function test
+	newButton.onclick = function() { test() };
+	
 	//create div6
 	var newDiv6 = document.createElement("div");
 	newDiv6.setAttribute("role","main");	
@@ -71,9 +73,10 @@ function addContact() {
 	newDiv7.setAttribute("data-controltype","textblock");
 	//create p with text node "history" and new p with id = lines
 	var newPP = document.createElement("p");
-	var newPText = document.createTextNode("History");
 	var newPPP = document.createElement("p");
-	newPPP.setAttribute("id","lines");
+	newPPP.id = name+"lines2";
+	var newPText = document.createTextNode("History");
+
 	
 	//add ons	
 	newDiv3.appendChild(newDiv5);	
@@ -106,10 +109,11 @@ function addContact() {
 	newMessage.appendChild(newMessageText);
 	newMenu.appendChild(newMessage);
 			//put p with id in history
+	newPP.appendChild(newPText);
+	//put pp in div7		
 	newPP.appendChild(newPPP);
 	//put history in p
-	newPP.appendChild(newPText);
-	//put pp in div7
+
 	newDiv7.appendChild(newPP);
 	newDiv6.appendChild(newDiv7);	
 	newDiv.appendChild(newDiv6);
@@ -132,6 +136,54 @@ function addContact() {
         newListItem.appendChild(newLink);
 		//put the list in the unordered list
         contactList.appendChild(newListItem);        
+        
+function test(){
+var value = document.getElementById(name+"options2").value;
+  var now = new Date();
+  var date = [ now.getMonth() + 1, now.getDate(), now.getFullYear() ];
+  var time = [ now.getHours(), now.getMinutes(), now.getSeconds() ];
+  var suffix = ( time[0] < 12 ) ? "AM" : "PM";
+  time[0] = ( time[0] < 12 ) ? time[0] : time[0] - 12;
+  time[0] = time[0] || 12;
+  for ( var i = 1; i < 3; i++ ) {
+    if ( time[i] < 10 ) {
+      time[i] = "0" + time[i];
+    	}
+	}
+var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
+	if (value == "call") {
+		//find where to put it
+		var history = document.getElementById(name+"lines2");
+		//create a new text item
+		var newText = document.createTextNode("Called " + stamp);
+		//create a new p item 
+		var newLine = document.createElement("p");
+		newLine.appendChild(newText);
+		history.appendChild(newLine);
+	}		
+	if (value == "email") {
+		//find where to put it
+		var history = document.getElementById(name+"lines2");
+		//create a new text item
+		var newText = document.createTextNode("Emailed " + stamp);
+		//create a new p item 
+		var newLine = document.createElement("p");
+		//put the text in the p
+		newLine.appendChild(newText);
+		history.appendChild(newLine);
+	}
+		if (value == "message") {
+		//find where to put it
+		var history = document.getElementById(name+"lines2");
+		//create a new text item
+		var newText = document.createTextNode("Messaged " + stamp);
+		//create a new p item 
+		var newLine = document.createElement("p");
+		//put the text in the p
+		newLine.appendChild(newText);
+		history.appendChild(newLine);
+	}
+}        
 }
 
 function updateHistory(){
@@ -181,6 +233,7 @@ var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
 		history.appendChild(newLine);
 	}		
 }
+
 
 
 
