@@ -23,11 +23,11 @@
 <body id="pages">
 <!-- New Landing Page -->
 <div data-role="page" data-control-title="Landing" id="landing">
-	<div data-role="header" data-theme="c">
-	<h1> CONNECTIONS </h1>
+	<div data-role="header" data-theme="b">
+	<h1>CONNECTIONS</h1>
 	</div>
 	<div role="main" class="ui-content">
-		<h2 class="mc-text-center">Welcome!</h2>
+		<h2 class="mc-text-center">Welcome to Connections!</h2>
 		<p class="mc-top-margin-1-5"><b>Existing Users</b></p>
 		<!-- sign in button -->
 		<a href="#login" class="ui-btn ui-btn-b ui-corner-all">Sign In</a>
@@ -36,6 +36,7 @@
 		<a href="#signup" class="ui-btn ui-btn-b ui-corner-all">Sign Up</a>
 		<p></p>
 	</div>
+	<div style="text-align: center"><img src="Connections.png" width="100" /></div>  
 </div>
 <!-- Login Page -->
 <div data-role="page" data-control-title="Login" id="login">
@@ -149,6 +150,25 @@
             CONNECTIONS
         </h1>
     </div>
+            <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li>
+                    <a href="#friends" data-transition="fade" data-theme="c" data-icon="">
+                        Friends
+                    </a>
+                </li>
+                <li>
+                    <a href="#family" data-transition="fade" data-theme="c" data-icon="">
+                        Family
+                    </a>
+                </li>
+                <li>
+                    <a href="#colleagues" data-transition="fade" data-theme="c" data-icon="">
+                        Colleagues
+                    </a>
+                </li>
+            </ul>
+        </div>
     <div role="main" class="ui-content">
         <ul data-role="listview" id ="contactList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >
             <li data-theme="a">
@@ -177,7 +197,7 @@
                 </a>
             </li>           
         </ul>
-    </div>
+    </div>    
     <div data-role="tabbar" data-iconpos="top" data-theme="a">
         <ul>
             <li>
@@ -206,7 +226,7 @@
         </h1>
         <a href="#home" data-icon="arrow-l" data-iconpos="left" class="ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left">
             Back
-        </a>        
+        </a>           
     </div>
     <div role="main" class="ui-content">
         <div class="ui-field-contain" data-controltype="camerainput">
@@ -219,28 +239,53 @@
             <label for="textinput1">
                 First Name:
             </label>
-            <input name="" id="textinput1" placeholder="" placeholder="Type First Name Here"
+            <input name="" id="textinput1" placeholder="Type First Name Here"
             type="text">
         </div>
         <div class="ui-field-contain" data-controltype="textinput">
             <label for="textinput6">
                 Last Name:
             </label>
-            <input name="" id="textinput6" placeholder="" placeholder="Type Last Name Here"
+            <input name="" id="textinput6" placeholder="Type Last Name Here"
             type="text">
         </div>
         <div class="ui-field-contain" data-controltype="textinput">
             <label for="textinput2">
                 Phone:
             </label>
-            <input name="" id="textinput2" placeholder="" placeholder="Phone" type="tel">
+            <input name="" id="textinput2" placeholder="" value="Phone" type="tel">
         </div>
         <div class="ui-field-contain" data-controltype="textinput">
             <label for="textinput5">
                 Email:
             </label>
-            <input name="" id="textinput5" placeholder="" placeholder="Email" type="email">
+            <input name="" id="textinput5" placeholder="" value="Email" type="email">
         </div>
+        <div class="ui-field-contain" data-controltype="textarea">
+            <label for="textarea1">
+                Notes
+            </label>
+            <textarea name="" id="textarea1" placeholder="Enter notes about contact here"></textarea>
+        </div>   
+        <div class="ui-field-contain" data-controltype="selectmenu">
+            <label for="selectmenu3">
+                Add to a group:
+            </label>
+            <select id="selectmenu3" name="" data-theme="c">
+                <option value="main">
+                    None (Main Only)
+                </option>
+                <option value="friends">
+                    Friends
+                </option>
+                <option value="family">
+                    Family
+                </option>
+                <option value="colleagues">
+                    Colleagues
+                </option>
+            </select>
+        </div>             
 		<a href="#home" class="ui-btn" onclick="addContact();refresh();">
             Submit
         </a>
@@ -257,8 +302,8 @@
         </a>                
     </div>
     <div role="main" class="ui-content"> <!--div3-->
-        <div data-controltype="textblock">
-            <p>
+        <div data-controltype="textblock"> <!--div4-->
+            <p id="breaks">
                 <b>
                     Name
                 </b>
@@ -267,7 +312,10 @@
                 </p>
                 <p>
                 	Phone
-                </p>	
+                </p>
+                <p>
+                	Notes
+                </p>		
             </p>
         </div> <!--div4-->
         <div class="ui-field-contain" data-controltype="selectmenu"> <!--div5-->
@@ -296,7 +344,7 @@
         			</p>
         		</p>
         	</div>
-        </div>			
+        </div>	
 </div>
 <!-- Notes -->
 <div data-role="page" data-control-title="Notes" id="page6">
@@ -334,7 +382,8 @@
         </a>
         <a href="https://docs.google.com/forms/d/1zkbUm3vR2uvIIPKkqEkxNII-r70r8lYFUb9oc6_4oA0/viewform?usp=send_form" data-icon="alert" data-iconpos="left" class="ui-btn  ui-icon-alert ui-btn-icon-left">
             Send a Question to Us
-        </a>        
+        </a>
+	<div style="text-align: center"><img src="Connections.png" width="100" /></div>                
         <div data-controltype="textblock">
             <p>
                 <strong>
@@ -516,6 +565,45 @@
                 </a>
             </li>
         </ul>
+    </div>
+</div>
+<!-- Friends page-->
+<div data-role="page" data-control-title="Friends" id="friends">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Friends
+        </h1>
+        <a href="#home" data-icon="arrow-l" data-iconpos="left" class="ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+    </div>
+</div>
+<!-- Family-->
+<div data-role="page" data-control-title="Family" id="family">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Family
+        </h1>
+        <a href="#home" data-icon="arrow-l" data-iconpos="left" class="ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
+    </div>
+</div>
+<!--Colleagues-->
+<div data-role="page" data-control-title="Colleagues" id="colleagues">
+    <div data-theme="a" data-role="header">
+        <h1 class="ui-title">
+            Colleagues
+        </h1>
+        <a href="#home" data-icon="arrow-l" data-iconpos="left" class="ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left">
+            Back
+        </a>
+    </div>
+    <div role="main" class="ui-content">
     </div>
 </div>
 </body>

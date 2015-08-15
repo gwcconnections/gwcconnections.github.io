@@ -1,7 +1,8 @@
-
 function addContact() {
 //makeNewHistory
+	var email = document.getElementById('textinput5').value;
     var name = document.getElementById('textinput1').value;   
+    var phone = document.getElementById('textinput2').value;
     var lastname = document.getElementById('textinput6').value;             
 	//find the body
 	var newpage = document.getElementById("pages");
@@ -31,6 +32,16 @@ function addContact() {
 	var newP = document.createElement("p");
 	var newB = document.createElement("b");
 	var newText = document.createTextNode(name+" "+lastname);
+	//create a p, b and textnode with email (textinput5)
+	var newPemail = document.createElement("p");
+	var newTemail = document.createTextNode(email);
+	//for the number
+	var newPphone = document.createElement("p");
+	var newTphone = document.createTextNode(phone);
+	var notes = document.getElementById('textarea1').value;
+	var newPnotes = document.createElement("p");
+	var newTnotes = document.createTextNode(notes);	
+	
 	//create another div
 	var newDiv5 = document.createElement("div");
 	newDiv5.setAttribute("data-controltype","selectmenu");	
@@ -76,7 +87,6 @@ function addContact() {
 	var newPPP = document.createElement("p");
 	newPPP.id = name+"lines2";
 	var newPText = document.createTextNode("History");
-
 	
 	//add ons	
 	newDiv3.appendChild(newDiv5);	
@@ -92,7 +102,7 @@ function addContact() {
 	//add the name in the b, the b in the p, the p in the div4
 	newB.appendChild(newText);
 	newP.appendChild(newB);
-	newDiv4.appendChild(newP);
+	newDiv4.appendChild(newP);			
 	//add div4 to div1 
 	newDiv.appendChild(newDiv4);
 	//add div3 to div1
@@ -119,6 +129,13 @@ function addContact() {
 	newDiv.appendChild(newDiv6);
 	//add the page to the div
 	newpage.appendChild(newDiv);
+	newDiv4.appendChild(newPemail);
+	newPemail.appendChild(newTemail);
+	newDiv4.appendChild(newPphone);
+	newPphone.appendChild(newTphone);
+	newDiv4.appendChild(newPnotes);
+	newPnotes.appendChild(newTnotes);		
+	
 //new contact	
     var contactList = document.getElementById("contactList");  
     	//create a new list item	
@@ -209,6 +226,32 @@ var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
 		var newLine = document.createElement("p");
 		newLine.appendChild(newText);
 		history.appendChild(newLine);
+		//create the notes button
+		var anotes = document.createElement("a");
+		anotes.setAttribute("href","#onions");
+		anotes.setAttribute("data-icon","edit");
+		anotes.setAttribute("data-rel","popup");		
+		anotes.setAttribute("data-iconpos","left");
+		var tnotes = document.createTextNode("  Notes");
+		anotes.appendChild(tnotes);
+		newLine.appendChild(anotes);
+		//create the popup
+		/*var dnotes = document.createElement("div");
+		dnotes.setAttribute("data-role","popup");
+		dnotes.id = "onions"
+		var pnotes = document.createElement("p");
+		var tnotes2 = document.createTextNode("Example popup dudes");
+		//push tnotes2 into pnotes
+		pnotes.appendChild(tnotes2);
+		//push pnotes into dnotes
+		dnotes.appendChild(pnotes);
+		//push dnotes into newline
+       	newLine.appendChild(dnotes);*/			
+		
+		
+		
+		
+		
 	}		
 	if (value == "email") {
 		//find where to put it
@@ -239,4 +282,11 @@ function refresh(){
 	//make it do something
 }
 
-	
+function group(){
+//make it add to the other lists
+}
+
+
+
+
+
