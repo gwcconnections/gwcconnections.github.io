@@ -236,7 +236,7 @@ var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
 
 function refresh(){
 	var refresh = document.getElementById('contactList');
-	alert(refresh);
+	//make it do something
 }
 
 	
