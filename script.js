@@ -88,6 +88,18 @@ function addContact() {
 	newPPP.id = name+"lines2";
 	var newPText = document.createTextNode("History");
 	
+	//creates a back button
+	var backbutton = document.createElement("a");
+	backbutton.setAttribute("href","#home");		
+	backbutton.setAttribute("data-icon","arrow-l");
+	backbutton.setAttribute("data-iconpos","left");	
+	backbutton.setAttribute("class","ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left");
+	var backbuttontext = document.createTextNode("Back");
+	//puts back button in
+	newDiv2.appendChild(backbutton);
+	backbutton.appendChild(backbuttontext);						
+			
+	
 	//add ons	
 	newDiv3.appendChild(newDiv5);	
 	newDiv3.appendChild(newButton);
@@ -218,6 +230,54 @@ var value = document.getElementById("options").value;
 	}
 var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
 	if (value == "call") {
+			
+		//making a new page called onion for now
+		var notesnewpage = document.getElementById("pages");
+		//make a new div
+		var notesnewDiv = document.createElement("div");
+		notesnewDiv.setAttribute("data-role","page");
+		notesnewDiv.setAttribute("id","onion");
+		var notesnewDiv2 = document.createElement("div");
+		notesnewDiv2.setAttribute("data-theme","a");
+		notesnewDiv2.setAttribute("data-role","header");	
+		var notesnewHeader = document.createElement("h1");
+		notesnewHeader.setAttribute("class","ui-title");	
+		var notesnewHeaderText = document.createTextNode("CONNECTIONS");
+		notesnewHeader.appendChild(notesnewHeaderText);
+		var notesnewDiv3 = document.createElement("div");
+		notesnewDiv3.setAttribute("role","main");	
+		notesnewDiv3.setAttribute("class","ui-content");
+		var notesnewDiv4 = document.createElement("div");
+		notesnewDiv4.setAttribute("data-controltype","textarea");	
+		notesnewDiv4.setAttribute("class","ui-field-contain");
+		var notesnewLabel = document.createElement("label");
+		notesnewLabel.setAttribute("for","textarea1");
+		var notesnewlabelt = document.createTextNode("Notes on Connection:");
+		var notesnewtextarea = document.createElement("textarea");
+		notesnewtextarea.setAttribute("id","textarea1");
+		//create the button
+		var notesback = document.createElement("a");
+		notesback.setAttribute("href","#history");		
+		notesback.setAttribute("data-icon","arrow-l");
+		notesback.setAttribute("data-iconpos","left");	
+		notesback.setAttribute("class","ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left");
+		var notesbacktext = document.createTextNode("Back");					
+			
+					
+		//put stuff in 
+		notesnewpage.appendChild(notesnewDiv);
+		notesnewDiv.appendChild(notesnewDiv2);
+		notesnewDiv2.appendChild(notesnewHeader);
+		notesnewHeader.appendChild(notesnewHeaderText);
+		notesnewDiv.appendChild(notesnewDiv3);
+		notesnewDiv3.appendChild(notesnewDiv4);
+		notesnewDiv4.appendChild(notesnewLabel);
+		notesnewLabel.appendChild(notesnewlabelt);
+		notesnewLabel.appendChild(notesnewtextarea);	
+		//the button appending
+		notesnewDiv2.appendChild(notesback);
+		notesback.appendChild(notesbacktext);	
+		
 		//find where to put it
 		var history = document.getElementById("lines");
 		//create a new text item
@@ -228,13 +288,15 @@ var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
 		history.appendChild(newLine);
 		//create the notes button
 		var anotes = document.createElement("a");
-		anotes.setAttribute("href","#onions");
-		anotes.setAttribute("data-icon","edit");
+		anotes.setAttribute("href","#onion");
+		/*anotes.setAttribute("data-icon","edit");
 		anotes.setAttribute("data-rel","popup");		
-		anotes.setAttribute("data-iconpos","left");
+		anotes.setAttribute("data-iconpos","left");*/
 		var tnotes = document.createTextNode("  Notes");
 		anotes.appendChild(tnotes);
-		newLine.appendChild(anotes);
+		newLine.appendChild(anotes);	
+
+		
 		//create the popup
 		/*var dnotes = document.createElement("div");
 		dnotes.setAttribute("data-role","popup");
@@ -247,11 +309,6 @@ var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
 		dnotes.appendChild(pnotes);
 		//push dnotes into newline
        	newLine.appendChild(dnotes);*/			
-		
-		
-		
-		
-		
 	}		
 	if (value == "email") {
 		//find where to put it
@@ -274,7 +331,8 @@ var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
 		//put the text in the p
 		newLine.appendChild(newText);
 		history.appendChild(newLine);
-	}		
+	}	
+				
 }
 
 function refresh(){
@@ -283,10 +341,63 @@ function refresh(){
 }
 
 function group(){
-//make it add to the other lists
+var value = document.getElementById("groups").value;
+var name = document.getElementById('textinput1').value;
+var lastname = document.getElementById('textinput6').value;  
+	if (value == "friends") {             
+   		 var contactList = document.getElementById("friendsList");  
+    	//create a new list item	
+        var newListItem = document.createElement("li");
+		newListItem.setAttribute("data-theme","a");
+		//create the ahref	
+		var newLink = document.createElement("a");
+		//set the link to #new-page
+		newLink.setAttribute("href","#"+name);
+		//create the text	
+        var newName = document.createTextNode(name+" "+lastname);
+		//put the name in the link
+		newLink.appendChild(newName);
+		//put the link in the list
+        newListItem.appendChild(newLink);
+		//put the list in the unordered list
+        contactList.appendChild(newListItem);
+    }        
+    if (value == "family") {
+       	var contactList = document.getElementById("familyList");  
+    	//create a new list item	
+        var newListItem = document.createElement("li");
+		newListItem.setAttribute("data-theme","a");
+		//create the ahref	
+		var newLink = document.createElement("a");
+		//set the link to #new-page
+		newLink.setAttribute("href","#"+name);
+		//create the text	
+        var newName = document.createTextNode(name+" "+lastname);
+		//put the name in the link
+		newLink.appendChild(newName);
+		//put the link in the list
+        newListItem.appendChild(newLink);
+		//put the list in the unordered list
+        contactList.appendChild(newListItem);
+   }
+    if (value == "colleagues") {
+       	var contactList = document.getElementById("colleagueList");  
+    	//create a new list item	
+        var newListItem = document.createElement("li");
+		newListItem.setAttribute("data-theme","a");
+		//create the ahref	
+		var newLink = document.createElement("a");
+		//set the link to #new-page
+		newLink.setAttribute("href","#"+name);
+		//create the text	
+        var newName = document.createTextNode(name+" "+lastname);
+		//put the name in the link
+		newLink.appendChild(newName);
+		//put the link in the list
+        newListItem.appendChild(newLink);
+		//put the list in the unordered list
+        contactList.appendChild(newListItem);
+   }                                       
+    
 }
-
-
-
-
 
