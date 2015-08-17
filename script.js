@@ -32,15 +32,6 @@ localStorage.setItem(userID+'lname',document.getElementById('txt-last-nameUP').v
 
 
 
-
-
-
-
-
-
-
-
-
 function sortList(){
 	var items = $('.alphaList li').get();
 	items.sort(function(a,b){
