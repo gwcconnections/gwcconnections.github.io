@@ -1,3 +1,34 @@
+function sortList(){
+	var items = $('.alphaList li').get();
+	items.sort(function(a,b){
+ 	 var keyA = $(a).text();
+  	var keyB = $(b).text();
+ 	 if (keyA < keyB) return -1;
+ 	 if (keyA > keyB) return 1;
+  	return 0;
+	});
+	var ul = $('.alphaList');
+	$.each(items, function(i, li){
+  	ul.append(li);
+	});
+}
+
+function sortfriendList(){
+	//for the friends list
+	var items = $('.friendList li').get();
+	items.sort(function(a,b){
+ 	 var keyA = $(a).text();
+  	var keyB = $(b).text();
+ 	 if (keyA < keyB) return -1;
+ 	 if (keyA > keyB) return 1;
+  	return 0;
+	});
+	var ul = $('.friendList');
+	$.each(items, function(i, li){
+  	ul.append(li);
+	});
+}
+
 function checkSignin() {
 
 var userID= document.getElementById('txt-email').value;
@@ -30,45 +61,6 @@ localStorage.setItem(userID+'lname',document.getElementById('txt-last-nameUP').v
 
 
 
-
-
-function sortList(){
-	var items = $('.alphaList li').get();
-	items.sort(function(a,b){
- 	 var keyA = $(a).text();
-  	var keyB = $(b).text();
- 	 if (keyA < keyB) return -1;
- 	 if (keyA > keyB) return 1;
-  	return 0;
-	});
-	var ul = $('.alphaList');
-	$.each(items, function(i, li){
-  	ul.append(li);
-	});
-}
-
-function sortfriendList(){
-	//for the friends list
-	var items = $('.friendList li').get();
-	items.sort(function(a,b){
- 	 var keyA = $(a).text();
-  	var keyB = $(b).text();
- 	 if (keyA < keyB) return -1;
- 	 if (keyA > keyB) return 1;
-  	return 0;
-	});
-	var ul = $('.friendList');
-	$.each(items, function(i, li){
-  	ul.append(li);
-	});
-}
-
-function autodividers(){
-	var listName = document.getElementById("contactList");
-	listName.setAttribute("data-autodividers","true");
-	document.getElementById('contactList').setAttribute('data-autodividers','true');
-}
-	
 function addContact() {
 //makeNewHistory
 	var email = document.getElementById('textinput5').value;
