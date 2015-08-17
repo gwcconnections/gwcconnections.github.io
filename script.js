@@ -1,3 +1,36 @@
+
+function sortcolleagueList(){
+	//for the friends list
+	var items = $('.colleagueList li').get();
+	items.sort(function(a,b){
+ 	 var keyA = $(a).text();
+  	var keyB = $(b).text();
+ 	 if (keyA < keyB) return -1;
+ 	 if (keyA > keyB) return 1;
+  	return 0;
+	});
+	var ul = $('.colleagueList');
+	$.each(items, function(i, li){
+  	ul.append(li);
+	});
+}
+
+function sortfamilyList(){
+	//for the friends list
+	var items = $('.familyList li').get();
+	items.sort(function(a,b){
+ 	 var keyA = $(a).text();
+  	var keyB = $(b).text();
+ 	 if (keyA < keyB) return -1;
+ 	 if (keyA > keyB) return 1;
+  	return 0;
+	});
+	var ul = $('.familyList');
+	$.each(items, function(i, li){
+  	ul.append(li);
+	});
+}
+
 function sortList(){
 	var items = $('.alphaList li').get();
 	items.sort(function(a,b){

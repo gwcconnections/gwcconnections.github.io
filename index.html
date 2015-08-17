@@ -159,12 +159,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#family" data-transition="fade" data-theme="c" data-icon="">
+                    <a href="#family" data-transition="fade" data-theme="c" data-icon="" onclick="sortfamilyList()">
                         Family
                     </a>
                 </li>
                 <li>
-                    <a href="#colleagues" data-transition="fade" data-theme="c" data-icon="">
+                    <a href="#colleagues" data-transition="fade" data-theme="c" data-icon="" onclick="sortcolleagueList()">
                         Colleagues
                     </a>
                 </li>
@@ -265,7 +265,6 @@
         </ul>
     </div>
 </div>
-<!-- Adding page -->
 <!-- Adding page -->
 <div data-role="page" data-control-title="Add" id="page4">
     <div data-theme="a" data-role="header">
@@ -662,7 +661,7 @@
         </a>
     </div>
     <div role="main" class="ui-content">
-        <ul data-role="listview" id ="familyList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >
+        <ul data-role="listview" class="familyList" id ="familyList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
                     Henry Hudson
@@ -703,7 +702,7 @@
         </a>
     </div>
     <div role="main" class="ui-content">
-        <ul data-role="listview" id ="colleagueList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >
+        <ul class="colleagueList" data-role="listview" id ="colleagueList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
                     Marilyn Monroe
