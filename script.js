@@ -1,37 +1,49 @@
-function sortList(){
-	var items = $('.alphaList li').get();
-	items.sort(function(a,b){
- 	 var keyA = $(a).text();
-  	var keyB = $(b).text();
- 	 if (keyA < keyB) return -1;
- 	 if (keyA > keyB) return 1;
-  	return 0;
-	});
-	var ul = $('.alphaList');
-	$.each(items, function(i, li){
-  	ul.append(li);
-	});
+function checkSignin() {
+
+var userID= document.getElementById('txt-email').value;
+var pwd= document.getElementById('txt-password').value;
+
+var pwd1= localStorage.getItem(userID);
+if (pwd==pwd1) {
+
+	$.mobile.changePage( "#home", { transition: "slideup"} );
+	return false
+}
+else {
+	
+	return true
 }
 
-function autodividers(){
-	var listName = document.getElementById("contactList");
-	listName.setAttribute("data-autodividers","true");
-	document.getElementById('contactList').setAttribute('data-autodividers','true');
 }
-	
+
+
+function saveSignup() {
+var userID= document.getElementById('txt-emailUP').value;
+var pwd= document.getElementById('txt-passwordUP').value;
+
+
+localStorage.setItem(userID,pwd); 
+localStorage.setItem(userID+'fname',document.getElementById('txt-first-nameUP').value);
+localStorage.setItem(userID+'lname',document.getElementById('txt-last-nameUP').value);
+
+}
+
+
+
 function addContact() {
 //makeNewHistory
-	var email = document.getElementById('textinput5').value;
-    var name = document.getElementById('textinput1').value;   
-    var phone = document.getElementById('textinput2').value;
-    var lastname = document.getElementById('textinput6').value;             
+	var email= document.getElementById('textinput5').value;
+    var name= document.getElementById('textinput1').value;   
+    var phone= document.getElementById('textinput2').value;
+    var lastname= document.getElementById('textinput6').value;             
+
 	//find the body
 	var newpage = document.getElementById("pages");
 	//make a new div
 	var newDiv = document.createElement("div");
 	newDiv.setAttribute("data-role","page");
 	//sets the id to new page
-	newDiv.setAttribute("id",name+lastname);
+	newDiv.setAttribute("id",name);
 	//create the div2
 	var newDiv2 = document.createElement("div");
 	newDiv2.setAttribute("data-theme","a");
@@ -177,7 +189,7 @@ function addContact() {
 		//create the ahref	
 		var newLink = document.createElement("a");
 		//set the link to #new-page
-		newLink.setAttribute("href","#"+name+lastname);
+		newLink.setAttribute("href","#"+name);
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
 		//put the name in the link
@@ -250,7 +262,6 @@ var value = document.getElementById("options").value;
     	}
 	}
 var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
-var notesvalue = (date+time+suffix);
 	if (value == "call") {
 			
 		//making a new page called onion for now
@@ -258,7 +269,7 @@ var notesvalue = (date+time+suffix);
 		//make a new div
 		var notesnewDiv = document.createElement("div");
 		notesnewDiv.setAttribute("data-role","page");
-		notesnewDiv.setAttribute("id",value+notesvalue);
+		notesnewDiv.setAttribute("id","onion");
 		var notesnewDiv2 = document.createElement("div");
 		notesnewDiv2.setAttribute("data-theme","a");
 		notesnewDiv2.setAttribute("data-role","header");	
@@ -310,7 +321,7 @@ var notesvalue = (date+time+suffix);
 		history.appendChild(newLine);
 		//create the notes button
 		var anotes = document.createElement("a");
-		anotes.setAttribute("href","#"+value+notesvalue);
+		anotes.setAttribute("href","#onion");
 		/*anotes.setAttribute("data-icon","edit");
 		anotes.setAttribute("data-rel","popup");		
 		anotes.setAttribute("data-iconpos","left");*/
