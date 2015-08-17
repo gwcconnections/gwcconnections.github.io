@@ -1,10 +1,10 @@
 function checkSignin() {
 
-var userID=document.getElementById('txt-email').value;
+var userID= document.getElementById('txt-email').value;
 var pwd= document.getElementById('txt-password').value;
 
-var pwd1=localStorage.getItem(userID);
-if (pwd==pwd1){
+var pwd1= localStorage.getItem(userID);
+if (pwd==pwd1) {
 
 	$.mobile.changePage( "#home", { transition: "slideup"} );
 	return false
@@ -13,18 +13,20 @@ else {
 	
 	return true
 }
+
 }
+
 
 function saveSignup() {
 var userID= document.getElementById('txt-emailUP').value;
 var pwd= document.getElementById('txt-passwordUP').value;
 
-localStorage.setItem(userID,pwd);
-localStorage.setItem(userID+'fname',document.getElementbyId('txt-first-nameUP').value);
+
+localStorage.setItem(userID,pwd); 
+localStorage.setItem(userID+'fname',document.getElementById('txt-first-nameUP').value);
 localStorage.setItem(userID+'lname',document.getElementById('txt-last-nameUP').value);
 
 }
-
 
 
 
