@@ -1,15 +1,59 @@
 function checkSignin() {
 
-var userID= document.getElementById('txt-email').value;
+var userID=document.getElementById('txt-email').value;
 var pwd= document.getElementById('txt-password').value;
 
-var pwd1= localStorage.getItem(userID);
-if (pwd==pwd1) {
+var pwd1=localStorage.getItem(userID);
+if (pwd==pwd1){
 
-<<<<<<< Updated upstream
 	$.mobile.changePage( "#home", { transition: "slideup"} );
 	return false
-=======
+}
+else {
+	
+	return true
+}
+}
+
+function saveSignup() {
+var userID= document.getElementById('txt-emailUP').value;
+var pwd= document.getElementById('txt-passwordUP').value;
+
+localStorage.setItem(userID,pwd);
+localStorage.setItem(userID+'fname',document.getElementbyId('txt-first-nameUP').value);
+localStorage.setItem(userID+'lname',document.getElementById('txt-last-nameUP').value);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function sortList(){
+	var items = $('.alphaList li').get();
+	items.sort(function(a,b){
+ 	 var keyA = $(a).text();
+  	var keyB = $(b).text();
+ 	 if (keyA < keyB) return -1;
+ 	 if (keyA > keyB) return 1;
+  	return 0;
+	});
+	var ul = $('.alphaList');
+	$.each(items, function(i, li){
+  	ul.append(li);
+	});
+}
+
 function sortfriendList(){
 	//for the friends list
 	var items = $('.friendList li').get();
@@ -30,43 +74,21 @@ function autodividers(){
 	var listName = document.getElementById("contactList");
 	listName.setAttribute("data-autodividers","true");
 	document.getElementById('contactList').setAttribute('data-autodividers','true');
->>>>>>> Stashed changes
 }
-else {
 	
-	return true
-}
-
-}
-
-
-function saveSignup() {
-var userID= document.getElementById('txt-emailUP').value;
-var pwd= document.getElementById('txt-passwordUP').value;
-
-
-localStorage.setItem(userID,pwd); 
-localStorage.setItem(userID+'fname',document.getElementById('txt-first-nameUP').value);
-localStorage.setItem(userID+'lname',document.getElementById('txt-last-nameUP').value);
-
-}
-
-
-
 function addContact() {
 //makeNewHistory
-	var email= document.getElementById('textinput5').value;
-    var name= document.getElementById('textinput1').value;   
-    var phone= document.getElementById('textinput2').value;
-    var lastname= document.getElementById('textinput6').value;             
-
+	var email = document.getElementById('textinput5').value;
+    var name = document.getElementById('textinput1').value;   
+    var phone = document.getElementById('textinput2').value;
+    var lastname = document.getElementById('textinput6').value;             
 	//find the body
 	var newpage = document.getElementById("pages");
 	//make a new div
 	var newDiv = document.createElement("div");
 	newDiv.setAttribute("data-role","page");
 	//sets the id to new page
-	newDiv.setAttribute("id",name);
+	newDiv.setAttribute("id",name+lastname);
 	//create the div2
 	var newDiv2 = document.createElement("div");
 	newDiv2.setAttribute("data-theme","a");
@@ -212,7 +234,7 @@ function addContact() {
 		//create the ahref	
 		var newLink = document.createElement("a");
 		//set the link to #new-page
-		newLink.setAttribute("href","#"+name);
+		newLink.setAttribute("href","#"+name+lastname);
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
 		//put the name in the link
@@ -285,6 +307,7 @@ var value = document.getElementById("options").value;
     	}
 	}
 var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
+var notesvalue = (date+time+suffix);
 	if (value == "call") {
 			
 		//making a new page called onion for now
@@ -292,7 +315,7 @@ var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
 		//make a new div
 		var notesnewDiv = document.createElement("div");
 		notesnewDiv.setAttribute("data-role","page");
-		notesnewDiv.setAttribute("id","onion");
+		notesnewDiv.setAttribute("id",value+notesvalue);
 		var notesnewDiv2 = document.createElement("div");
 		notesnewDiv2.setAttribute("data-theme","a");
 		notesnewDiv2.setAttribute("data-role","header");	
@@ -344,7 +367,7 @@ var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
 		history.appendChild(newLine);
 		//create the notes button
 		var anotes = document.createElement("a");
-		anotes.setAttribute("href","#onion");
+		anotes.setAttribute("href","#"+value+notesvalue);
 		/*anotes.setAttribute("data-icon","edit");
 		anotes.setAttribute("data-rel","popup");		
 		anotes.setAttribute("data-iconpos","left");*/
