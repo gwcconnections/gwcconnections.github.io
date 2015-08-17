@@ -6,8 +6,31 @@ var pwd= document.getElementById('txt-password').value;
 var pwd1= localStorage.getItem(userID);
 if (pwd==pwd1) {
 
+<<<<<<< Updated upstream
 	$.mobile.changePage( "#home", { transition: "slideup"} );
 	return false
+=======
+function sortfriendList(){
+	//for the friends list
+	var items = $('.friendList li').get();
+	items.sort(function(a,b){
+ 	 var keyA = $(a).text();
+  	var keyB = $(b).text();
+ 	 if (keyA < keyB) return -1;
+ 	 if (keyA > keyB) return 1;
+  	return 0;
+	});
+	var ul = $('.friendList');
+	$.each(items, function(i, li){
+  	ul.append(li);
+	});
+}
+
+function autodividers(){
+	var listName = document.getElementById("contactList");
+	listName.setAttribute("data-autodividers","true");
+	document.getElementById('contactList').setAttribute('data-autodividers','true');
+>>>>>>> Stashed changes
 }
 else {
 	

@@ -53,8 +53,7 @@
             <input type="checkbox" name="chck-rememberme" id="chck-rememberme" checked="">
             <label for="chck-rememberme">Remember me</label>
             </fieldset>
-            <a href="#dlg-invalid-credentials" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5" onclick="return checkSignin()">Submit</a>
-
+            <a href="#dlg-invalid-credentials" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
             <p class="mc-top-margin-1-5"><a href="#pwreset">Can't access your account?</a></p>
             <div data-role="popup" id="dlg-invalid-credentials" data-dismissible="false" style="max-width:400px;">
             <div role="main" class="ui-content">
@@ -79,12 +78,12 @@
         <label for="txt-last-name">Last Name</label>
         <input type="text" name="txt-last-name" id="txt-last-name" value="">
         <label for="txt-email">Email Address</label>
-        <input type="text" name="txt-email" id="txt-emailUP" value="">
+        <input type="text" name="txt-email" id="txt-email" value="">
         <label for="txt-password">Password</label>
-        <input type="password" name="txt-password" id="txt-passwordUP" value="">
+        <input type="password" name="txt-password" id="txt-password" value="">
         <label for="txt-password-confirm">Confirm Password</label>
         <input type="password" name="txt-password-confirm" id="txt-password-confirm" value="">
-        <a href="#dlg-sign-up-sent" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5" onclick= "saveSignup()">Submit</a>
+        <a href="#dlg-sign-up-sent" data-rel="popup" data-transition="pop" data-position-to="window" id="btn-submit" class="ui-btn ui-btn-b ui-corner-all mc-top-margin-1-5">Submit</a>
         <div data-role="popup" id="dlg-sign-up-sent" data-dismissible="false" style="max-width:400px;">
             <div data-role="header">
                 <h1>Almost done...</h1>
@@ -151,10 +150,10 @@
             CONNECTIONS
         </h1>
     </div>
-            <div data-role="navbar" data-iconpos="top">
+    <div data-role="navbar" data-iconpos="top">
             <ul>
                 <li>
-                    <a href="#friends" data-transition="fade" data-theme="c" data-icon="">
+                    <a href="#friends" data-transition="fade" data-theme="c" data-icon="" onclick="sortfriendList()">
                         Friends
                     </a>
                 </li>
@@ -170,33 +169,79 @@
                 </li>
             </ul>
         </div>
-    <div role="main" class="ui-content">
-        <ul data-role="listview" id ="contactList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >
+    <div role="main" class="ui-content" id="my-list">
+    <!-- data-inset="false" to remove button corners -->
+        <ul class="alphaList" data-role="listview" id ="contactList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >  
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Asia Burrell
+                    Marilyn Monroe
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Jay Wong
+                    Kim Kardashian
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Tiffany Xiao
+                    Taylor Swift
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Victoria Tan
+                    George Bush
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Wilson Chen
+                    Benjamin Franklin
                 </a>
-            </li>           
+            </li> 
+			<li data-theme="a">
+                <a href="#history" data-transition="slide">
+                    Henry Hudson
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#history" data-transition="slide">
+                    Jane Addams
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#history" data-transition="slide">
+                    Elizabeth Cady Stanton
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#history" data-transition="slide">
+                    Kanye West
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#history" data-transition="slide">
+                    Donald Trump
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#history" data-transition="slide">
+                    Addam Levine 
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#history" data-transition="slide">
+                    Ash Ketchum
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#history" data-transition="slide">
+                    Lady Gaga
+                </a>
+            </li>
+            <li data-theme="a">
+                <a href="#history" data-transition="slide">
+                    Justin Bieber
+                </a>
+            </li>                                             
         </ul>
     </div>    
     <div data-role="tabbar" data-iconpos="top" data-theme="a">
@@ -287,7 +332,7 @@
                 </option>
             </select>
         </div>             
-		<a href="#home" class="ui-btn" onclick="addContact();group();">
+		<a href="#home" class="ui-btn" onclick="addContact();group();sortList();autodividers();">
             Submit
         </a>
     </div>
@@ -570,7 +615,7 @@
 </div>
 <!-- Friends page-->
 <div data-role="page" data-control-title="Friends" id="friends">
-    <div data-theme="a" data-role="header">
+    <div data-theme="a" data-role="header" id="my-list">
         <h1 class="ui-title">
             Friends
         </h1>
@@ -579,30 +624,25 @@
         </a>
     </div>
     <div role="main" class="ui-content">
-        <ul data-role="listview" id ="friendsList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >
+        <ul data-role="listview" class="friendList" id ="friendsList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Asia Burrell
+                    Addam Levine 
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Jay Wong
+                    Ash Ketchum
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Tiffany Xiao
+                    Lady Gaga
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Victoria Tan
-                </a>
-            </li>
-            <li data-theme="a">
-                <a href="#history" data-transition="slide">
-                    Wilson Chen
+                    Justin Bieber
                 </a>
             </li>           
         </ul>
@@ -623,27 +663,27 @@
         <ul data-role="listview" id ="familyList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Asia Burrell
+                    Henry Hudson
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Jay Wong
+                    Jane Addams
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Tiffany Xiao
+                    Elizabeth Cady Stanton
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Victoria Tan
+                    Kanye West
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Wilson Chen
+                    Donald Trump
                 </a>
             </li>           
         </ul>
@@ -664,27 +704,27 @@
         <ul data-role="listview" id ="colleagueList" data-divider-theme="a" data-inset="true" data-filter="true" data-filter-placeholder="Search Contacts List..." >
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Asia Burrell
+                    Marilyn Monroe
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Jay Wong
+                    Kim Kardashian
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Tiffany Xiao
+                    Taylor Swift
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Victoria Tan
+                    George Bush
                 </a>
             </li>
             <li data-theme="a">
                 <a href="#history" data-transition="slide">
-                    Wilson Chen
+                    Benjamin Franklin
                 </a>
             </li>           
         </ul>
