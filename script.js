@@ -927,7 +927,7 @@ var lastname = document.getElementById('textinput6').value;
 		//create the ahref	
 		var newLink = document.createElement("a");
 		//set the link to #new-page
-		newLink.setAttribute("href","#"+name+lastname);
+		newLink.setAttribute("href","#"+name+lastname+"updatedhistory");
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
         var newPic = document.createElement("img");
@@ -940,6 +940,11 @@ var lastname = document.getElementById('textinput6').value;
         newListItem.appendChild(newLink);
 		//put the list in the unordered list
         contactList.appendChild(newListItem);
+        //create the notes button
+		var anotes = document.createElement("a");
+		anotes.setAttribute("href","#"+name+lastname);
+		newListItem.appendChild(anotes);
+        
     }        
     if (value == "family") {
        	var contactList = document.getElementById("familyList");  
@@ -949,7 +954,7 @@ var lastname = document.getElementById('textinput6').value;
 		//create the ahref	
 		var newLink = document.createElement("a");
 		//set the link to #new-page
-		newLink.setAttribute("href","#"+name+lastname);
+		newLink.setAttribute("href","#"+name+lastname+"updatedhistory");
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
 		//put the name in the link
@@ -962,6 +967,9 @@ var lastname = document.getElementById('textinput6').value;
         newListItem.appendChild(newLink);
 		//put the list in the unordered list
         contactList.appendChild(newListItem);
+		var anotes = document.createElement("a");
+		anotes.setAttribute("href","#"+name+lastname);
+		newListItem.appendChild(anotes);        
    }
     if (value == "colleagues") {
        	var contactList = document.getElementById("colleagueList");  
@@ -971,7 +979,7 @@ var lastname = document.getElementById('textinput6').value;
 		//create the ahref	
 		var newLink = document.createElement("a");
 		//set the link to #new-page
-		newLink.setAttribute("href","#"+name+lastname);
+		newLink.setAttribute("href","#"+name+lastname+"updatedhistory");
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
         var newPic = document.createElement("img");
@@ -984,6 +992,9 @@ var lastname = document.getElementById('textinput6').value;
         newListItem.appendChild(newLink);
 		//put the list in the unordered list
         contactList.appendChild(newListItem);
+		var anotes = document.createElement("a");
+		anotes.setAttribute("href","#"+name+lastname);
+		newListItem.appendChild(anotes);        
    }                                       
     
 }
