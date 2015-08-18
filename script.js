@@ -162,6 +162,14 @@ function addContact() {
 	var newMessage = document.createElement("option");
 	newMessage.setAttribute("value","message");	
 	var newMessageText = document.createTextNode("Message");
+	//create the meeting option and text node
+	var newMeeting = document.createElement("option");
+	newMeeting.setAttribute("value","meeting");	
+	var newMeetingText = document.createTextNode("Meeting");
+	//create the others option and text node
+	var newOther = document.createElement("option");
+	newOther.setAttribute("value","other");	
+	var newOtherText = document.createTextNode("Other");	
 	//create the notes "short" 
 	
 	
@@ -252,6 +260,12 @@ function addContact() {
 	//same with message
 	newMessage.appendChild(newMessageText);
 	newMenu.appendChild(newMessage);
+	//same with meeting
+	newMeeting.appendChild(newMeetingText);
+	newMenu.appendChild(newMeeting);	
+		//same with other
+	newOther.appendChild(newOtherText);
+	newMenu.appendChild(newOther);	
 			//put p with id in history
 	newPP.appendChild(newPText);
 	//put pp in div7		
@@ -433,7 +447,7 @@ var notesvalue = (date+time+suffix);
 		var timelabelt = document.createTextNode("Time:");
 		var timearea = document.createElement("input");
 		timearea.setAttribute("id","dateinput1");
-		timearea.setAttribute("type","date");
+		timearea.setAttribute("type","time");
 		timearea.setAttribute("placeholder","");
 		
 		
@@ -580,7 +594,7 @@ var notesvalue = (date+time+suffix);
 		var timelabelt = document.createTextNode("Time:");
 		var timearea = document.createElement("input");
 		timearea.setAttribute("id","dateinput1");
-		timearea.setAttribute("type","date");
+		timearea.setAttribute("type","time");
 		timearea.setAttribute("placeholder","");
 		
 		
@@ -693,7 +707,7 @@ var notesvalue = (date+time+suffix);
 		var timelabelt = document.createTextNode("Time:");
 		var timearea = document.createElement("input");
 		timearea.setAttribute("id","dateinput1");
-		timearea.setAttribute("type","date");
+		timearea.setAttribute("type","time");
 		timearea.setAttribute("placeholder","");
 		
 		
@@ -793,6 +807,232 @@ var notesvalue = (date+time+suffix);
 		notesnewLine.appendChild(notesnewText);
 		newhistory.appendChild(notesnewLine);
 	}
+	if (value == "meeting") {
+		//making a new page for notes
+		var notesnewpage = document.getElementById("pages");
+		//make a new div
+		var notesnewDiv = document.createElement("div");
+		notesnewDiv.setAttribute("data-role","page");
+		notesnewDiv.setAttribute("id",value+notesvalue);
+		var notesnewDiv2 = document.createElement("div");
+		notesnewDiv2.setAttribute("data-theme","a");
+		notesnewDiv2.setAttribute("data-role","header");	
+		var notesnewHeader = document.createElement("h1");
+		notesnewHeader.setAttribute("class","ui-title");	
+		var notesnewHeaderText = document.createTextNode("CONNECTIONS");
+		notesnewHeader.appendChild(notesnewHeaderText);
+		var notesnewDiv3 = document.createElement("div");
+		notesnewDiv3.setAttribute("role","main");	
+		notesnewDiv3.setAttribute("class","ui-content");
+		var notesnewDiv4 = document.createElement("div");
+		notesnewDiv4.setAttribute("data-controltype","textarea");	
+		var notesnewLabel = document.createElement("label");
+		notesnewLabel.setAttribute("for","textarea1");
+		var notesnewlabelt = document.createTextNode("Short Notes About Connection:");
+		var notesnewtextarea = document.createElement("textarea");
+		notesnewtextarea.setAttribute("id",name+value+"textarea100");
+		
+		
+		
+		//for the date
+		var datediv = document.createElement("div");
+		datediv.setAttribute("class","ui-field-contain");	
+		datediv.setAttribute("data-controltype","dateinput");
+		var dateLabel = document.createElement("label");
+		dateLabel.setAttribute("for","dateinput1");
+		var datelabelt = document.createTextNode("Date:");
+		var datearea = document.createElement("input");
+		datearea.setAttribute("id","dateinput1");
+		datearea.setAttribute("type","date");
+		datearea.setAttribute("placeholder","");
+		
+		//for the time
+		var timediv = document.createElement("div");
+		timediv.setAttribute("class","ui-field-contain");	
+		timediv.setAttribute("data-controltype","dateinput");
+		var timeLabel = document.createElement("label");
+		timeLabel.setAttribute("for","dateinput1");
+		var timelabelt = document.createTextNode("Time:");
+		var timearea = document.createElement("input");
+		timearea.setAttribute("id","dateinput1");
+		timearea.setAttribute("type","time");
+		timearea.setAttribute("placeholder","");
+		
+		
+		notesnewDiv3.appendChild(datediv);
+		dateLabel.appendChild(datelabelt);
+		datediv.appendChild(dateLabel);						
+		datediv.appendChild(datearea);
+
+		notesnewDiv3.appendChild(timediv);
+		timeLabel.appendChild(timelabelt);
+		timediv.appendChild(timeLabel);						
+		timediv.appendChild(timearea);
+		
+		//create the button
+		var notesback = document.createElement("a");
+		notesback.setAttribute("href","#"+name+lastname);		
+		notesback.setAttribute("data-icon","arrow-l");
+		notesback.setAttribute("data-iconpos","left");	
+		notesback.setAttribute("class","ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left");
+		var notesbacktext = document.createTextNode("Back");					
+	
+		
+			
+					
+		//put stuff in 
+		notesnewpage.appendChild(notesnewDiv);
+		notesnewDiv.appendChild(notesnewDiv2);
+		notesnewDiv2.appendChild(notesnewHeader);
+		notesnewHeader.appendChild(notesnewHeaderText);
+		notesnewDiv.appendChild(notesnewDiv3);
+		notesnewDiv3.appendChild(notesnewDiv4);
+		notesnewDiv4.appendChild(notesnewLabel);
+		notesnewLabel.appendChild(notesnewlabelt);
+		notesnewLabel.appendChild(notesnewtextarea);	
+		//the button appending
+		notesnewDiv2.appendChild(notesback);
+		notesback.appendChild(notesbacktext);
+		
+		//putting it into the history
+		var history = document.getElementById(name+lastname+"historyList");
+		//create a new text item
+		var newListText = document.createTextNode("Met " + stamp);
+		var newText = document.createElement("a");
+		newText.setAttribute("href","#"+value+notesvalue);
+		newText.appendChild(newListText);
+		//create a new p item 
+		var newLine = document.createElement("li");
+		newLine.appendChild(newText);
+		history.appendChild(newLine);
+		
+		//putting it into updated history
+		var newhistory = document.getElementById(name+lastname+"notesnewhistoryList");
+		var finalnotes = document.getElementById("textarea200").value;
+		
+		//create a new text item
+		var notesnewListText = document.createTextNode("Met " + stamp + " Notes: "+finalnotes);
+		var notesnewText = document.createElement("p");
+		notesnewText.appendChild(notesnewListText);
+		//create a new p item 
+		var notesnewLine = document.createElement("li");
+		notesnewLine.appendChild(notesnewText);
+		newhistory.appendChild(notesnewLine);
+		
+	}	
+	if (value == "other") {
+		//making a new page for notes
+		var notesnewpage = document.getElementById("pages");
+		//make a new div
+		var notesnewDiv = document.createElement("div");
+		notesnewDiv.setAttribute("data-role","page");
+		notesnewDiv.setAttribute("id",value+notesvalue);
+		var notesnewDiv2 = document.createElement("div");
+		notesnewDiv2.setAttribute("data-theme","a");
+		notesnewDiv2.setAttribute("data-role","header");	
+		var notesnewHeader = document.createElement("h1");
+		notesnewHeader.setAttribute("class","ui-title");	
+		var notesnewHeaderText = document.createTextNode("CONNECTIONS");
+		notesnewHeader.appendChild(notesnewHeaderText);
+		var notesnewDiv3 = document.createElement("div");
+		notesnewDiv3.setAttribute("role","main");	
+		notesnewDiv3.setAttribute("class","ui-content");
+		var notesnewDiv4 = document.createElement("div");
+		notesnewDiv4.setAttribute("data-controltype","textarea");	
+		var notesnewLabel = document.createElement("label");
+		notesnewLabel.setAttribute("for","textarea1");
+		var notesnewlabelt = document.createTextNode("Short Notes About Connection:");
+		var notesnewtextarea = document.createElement("textarea");
+		notesnewtextarea.setAttribute("id",name+value+"textarea100");
+		
+		
+		
+		//for the date
+		var datediv = document.createElement("div");
+		datediv.setAttribute("class","ui-field-contain");	
+		datediv.setAttribute("data-controltype","dateinput");
+		var dateLabel = document.createElement("label");
+		dateLabel.setAttribute("for","dateinput1");
+		var datelabelt = document.createTextNode("Date:");
+		var datearea = document.createElement("input");
+		datearea.setAttribute("id","dateinput1");
+		datearea.setAttribute("type","date");
+		datearea.setAttribute("placeholder","");
+		
+		//for the time
+		var timediv = document.createElement("div");
+		timediv.setAttribute("class","ui-field-contain");	
+		timediv.setAttribute("data-controltype","dateinput");
+		var timeLabel = document.createElement("label");
+		timeLabel.setAttribute("for","dateinput1");
+		var timelabelt = document.createTextNode("Time:");
+		var timearea = document.createElement("input");
+		timearea.setAttribute("id","dateinput1");
+		timearea.setAttribute("type","time");
+		timearea.setAttribute("placeholder","");
+		
+		
+		notesnewDiv3.appendChild(datediv);
+		dateLabel.appendChild(datelabelt);
+		datediv.appendChild(dateLabel);						
+		datediv.appendChild(datearea);
+
+		notesnewDiv3.appendChild(timediv);
+		timeLabel.appendChild(timelabelt);
+		timediv.appendChild(timeLabel);						
+		timediv.appendChild(timearea);
+		
+		//create the button
+		var notesback = document.createElement("a");
+		notesback.setAttribute("href","#"+name+lastname);		
+		notesback.setAttribute("data-icon","arrow-l");
+		notesback.setAttribute("data-iconpos","left");	
+		notesback.setAttribute("class","ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left");
+		var notesbacktext = document.createTextNode("Back");					
+	
+		
+			
+					
+		//put stuff in 
+		notesnewpage.appendChild(notesnewDiv);
+		notesnewDiv.appendChild(notesnewDiv2);
+		notesnewDiv2.appendChild(notesnewHeader);
+		notesnewHeader.appendChild(notesnewHeaderText);
+		notesnewDiv.appendChild(notesnewDiv3);
+		notesnewDiv3.appendChild(notesnewDiv4);
+		notesnewDiv4.appendChild(notesnewLabel);
+		notesnewLabel.appendChild(notesnewlabelt);
+		notesnewLabel.appendChild(notesnewtextarea);	
+		//the button appending
+		notesnewDiv2.appendChild(notesback);
+		notesback.appendChild(notesbacktext);
+		
+		//putting it into the history
+		var history = document.getElementById(name+lastname+"historyList");
+		//create a new text item
+		var newListText = document.createTextNode("Other " + stamp);
+		var newText = document.createElement("a");
+		newText.setAttribute("href","#"+value+notesvalue);
+		newText.appendChild(newListText);
+		//create a new p item 
+		var newLine = document.createElement("li");
+		newLine.appendChild(newText);
+		history.appendChild(newLine);
+		
+		//putting it into updated history
+		var newhistory = document.getElementById(name+lastname+"notesnewhistoryList");
+		var finalnotes = document.getElementById("textarea200").value;
+		
+		//create a new text item
+		var notesnewListText = document.createTextNode("Other " + stamp + " Notes: "+finalnotes);
+		var notesnewText = document.createElement("p");
+		notesnewText.appendChild(notesnewListText);
+		//create a new p item 
+		var notesnewLine = document.createElement("li");
+		notesnewLine.appendChild(notesnewText);
+		newhistory.appendChild(notesnewLine);
+		
+	}	
 }
 
 
