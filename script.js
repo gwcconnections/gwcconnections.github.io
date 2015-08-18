@@ -407,22 +407,24 @@ var notesvalue = (date+time+suffix);
 		var notesnewtextarea = document.createElement("textarea");
 		notesnewtextarea.setAttribute("id",name+value+"textarea100");
 		
-		//***WHERE I MADE CHANGES !!!!!!!!!!!!!
 		//for the date
 		var datediv = document.createElement("div");
 		datediv.setAttribute("class","ui-field-contain");	
 		datediv.setAttribute("data-controltype","dateinput");
 		var dateLabel = document.createElement("label");
-		dateLabel.setAttribute("for","textarea2");
+		dateLabel.setAttribute("for","dateinput1");
 		var datelabelt = document.createTextNode("Date:");
 		var datearea = document.createElement("input");
-		datearea.setAttribute("id",name+value+"dateinput");
+		datearea.setAttribute("id","dateinput1");
 		datearea.setAttribute("type","date");
-		dateLabel.appendChild(datelabelt);
-		datediv.appendChild(datearea);						
-		datediv.appendChild(dateLabel);
-		notesnewDiv3.appendChild(datediv);
+		datearea.setAttribute("placeholder","");
 		
+		
+		notesnewDiv3.appendChild(datediv);
+		dateLabel.appendChild(datelabelt);
+		datediv.appendChild(dateLabel);						
+		datediv.appendChild(datearea);
+
 		
 		
 				
