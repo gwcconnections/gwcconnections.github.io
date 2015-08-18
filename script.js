@@ -307,7 +307,6 @@ function addContact() {
 		notesnewhistoryList.setAttribute("data-filter-placeholder","Search Connections...");	
 		notesnewPPP.appendChild(notesnewhistoryList);
 		
-		
 		//create the button
 		var notesback = document.createElement("a");
 		notesback.setAttribute("href","#home");		
@@ -407,6 +406,41 @@ var notesvalue = (date+time+suffix);
 		var notesnewlabelt = document.createTextNode("Notes on Connection:");
 		var notesnewtextarea = document.createElement("textarea");
 		notesnewtextarea.setAttribute("id",name+value+"textarea100");
+		
+		//***WHERE I MADE CHANGES !!!!!!!!!!!!!
+		//for the date
+		var datediv = document.createElement("div");
+		datediv.setAttribute("class","ui-field-contain");	
+		datediv.setAttribute("data-controltype","dateinput");
+		var dateLabel = document.createElement("label");
+		dateLabel.setAttribute("for","textarea2");
+		var datelabelt = document.createTextNode("Date:");
+		var datearea = document.createElement("input");
+		datearea.setAttribute("id",name+value+"dateinput");
+		datearea.setAttribute("type","date");
+		dateLabel.appendChild(datelabelt);
+		datediv.appendChild(datearea);						
+		datediv.appendChild(dateLabel);
+		notesnewDiv3.appendChild(datediv);
+		
+		
+		
+				
+		/*<div class="ui-field-contain" data-controltype="dateinput">
+            <label for="dateinput1">
+                Date:
+            </label>
+            <input name="" id="dateinput1" placeholder="" value="" type="date">
+        </div>
+        <div class="ui-field-contain" data-controltype="dateinput">
+            <label for="dateinput2">
+                Title
+            </label>
+            <input name="" id="dateinput2" placeholder="" value="" type="time">
+        </div>*/
+		
+		
+		
 		//create the button
 		var notesback = document.createElement("a");
 		notesback.setAttribute("href","#"+name+lastname);		
@@ -633,7 +667,6 @@ var notesvalue = (date+time+suffix);
 }        
 
 
-
 /*//remove this later
 function updateHistory(){
 var value = document.getElementById("options").value;
@@ -756,9 +789,13 @@ var lastname = document.getElementById('textinput6').value;
 		//create the ahref	
 		var newLink = document.createElement("a");
 		//set the link to #new-page
-		newLink.setAttribute("href","#"+name);
+		newLink.setAttribute("href","#"+name+lastname);
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
+        var newPic = document.createElement("img");
+        newPic.setAttribute("src","default.png");
+        //put the image in the link
+        newLink.appendChild(newPic);
 		//put the name in the link
 		newLink.appendChild(newName);
 		//put the link in the list
@@ -774,10 +811,14 @@ var lastname = document.getElementById('textinput6').value;
 		//create the ahref	
 		var newLink = document.createElement("a");
 		//set the link to #new-page
-		newLink.setAttribute("href","#"+name);
+		newLink.setAttribute("href","#"+name+lastname);
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
 		//put the name in the link
+		var newPic = document.createElement("img");
+        newPic.setAttribute("src","default.png");
+        //put the image in the link
+        newLink.appendChild(newPic);
 		newLink.appendChild(newName);
 		//put the link in the list
         newListItem.appendChild(newLink);
@@ -792,9 +833,13 @@ var lastname = document.getElementById('textinput6').value;
 		//create the ahref	
 		var newLink = document.createElement("a");
 		//set the link to #new-page
-		newLink.setAttribute("href","#"+name);
+		newLink.setAttribute("href","#"+name+lastname);
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
+        var newPic = document.createElement("img");
+        newPic.setAttribute("src","default.png");
+        //put the image in the link
+        newLink.appendChild(newPic);
 		//put the name in the link
 		newLink.appendChild(newName);
 		//put the link in the list
