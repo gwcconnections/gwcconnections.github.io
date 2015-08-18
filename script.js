@@ -181,7 +181,7 @@ function addContact() {
 	fnotesnewLabel.setAttribute("for","textarea1");
 	var fnotesnewlabelt = document.createTextNode("Notes on Connection:");
 	var fnotesnewtextarea = document.createElement("textarea");
-	fnotesnewtextarea.setAttribute("id","textarea200");	
+	fnotesnewtextarea.setAttribute("id",name+lastname+"textarea200");	
 
 	//put the notes into the div
 	
@@ -422,7 +422,7 @@ var notesvalue = (date+time+suffix);
 		notesnewLabel.setAttribute("for","textarea1");
 		var notesnewlabelt = document.createTextNode("Short Notes About Connection:");
 		var notesnewtextarea = document.createElement("textarea");
-		notesnewtextarea.setAttribute("id",name+value+"textarea100");
+		notesnewtextarea.setAttribute("id",name+value+stamp+"textarea100");
 		
 		
 		
@@ -518,7 +518,7 @@ var notesvalue = (date+time+suffix);
 		
 		//putting it into updated history
 		var newhistory = document.getElementById(name+lastname+"notesnewhistoryList");
-		var finalnotes = document.getElementById("textarea200").value;
+		var finalnotes = document.getElementById(name+lastname+"textarea200").value;
 		
 		//create a new text item
 		var notesnewListText = document.createTextNode("Called " + stamp + " Notes: "+finalnotes);
@@ -569,7 +569,7 @@ var notesvalue = (date+time+suffix);
 		notesnewLabel.setAttribute("for","textarea1");
 		var notesnewlabelt = document.createTextNode("Short Notes About Connection:");
 		var notesnewtextarea = document.createElement("textarea");
-		notesnewtextarea.setAttribute("id",name+value+"textarea100");
+		notesnewtextarea.setAttribute("id",name+value+stamp+"textarea100");
 		
 		
 		
@@ -647,7 +647,7 @@ var notesvalue = (date+time+suffix);
 		
 		//putting it into updated history
 		var newhistory = document.getElementById(name+lastname+"notesnewhistoryList");
-		var finalnotes = document.getElementById("textarea200").value;
+		var finalnotes = document.getElementById(name+lastname+"textarea200").value;
 		
 		//create a new text item
 		var notesnewListText = document.createTextNode("Emailed " + stamp + " Notes: "+finalnotes);
@@ -682,7 +682,7 @@ var notesvalue = (date+time+suffix);
 		notesnewLabel.setAttribute("for","textarea1");
 		var notesnewlabelt = document.createTextNode("Short Notes About Connection:");
 		var notesnewtextarea = document.createElement("textarea");
-		notesnewtextarea.setAttribute("id",name+value+"textarea100");
+		notesnewtextarea.setAttribute("id",name+value+stamp+"textarea100");
 		
 		
 		
@@ -796,7 +796,7 @@ var notesvalue = (date+time+suffix);
 		
 		//putting it into updated history
 		var newhistory = document.getElementById(name+lastname+"notesnewhistoryList");
-		var finalnotes = document.getElementById("textarea200").value;
+		var finalnotes = document.getElementById(name+lastname+"textarea200").value;
 		
 		//create a new text item
 		var notesnewListText = document.createTextNode("Messaged " + stamp + " Notes: "+finalnotes);
@@ -908,7 +908,7 @@ var notesvalue = (date+time+suffix);
 		
 		//putting it into updated history
 		var newhistory = document.getElementById(name+lastname+"notesnewhistoryList");
-		var finalnotes = document.getElementById("textarea200").value;
+		var finalnotes = document.getElementById(name+lastname+"textarea200").value;
 		
 		//create a new text item
 		var notesnewListText = document.createTextNode("Met " + stamp + " Notes: "+finalnotes);
@@ -1021,7 +1021,7 @@ var notesvalue = (date+time+suffix);
 		
 		//putting it into updated history
 		var newhistory = document.getElementById(name+lastname+"notesnewhistoryList");
-		var finalnotes = document.getElementById("textarea200").value;
+		var finalnotes = document.getElementById(name+lastname+"textarea200").value;
 		
 		//create a new text item
 		var notesnewListText = document.createTextNode("Other " + stamp + " Notes: "+finalnotes);
