@@ -1,6 +1,6 @@
 
 function sortcolleagueList(){
-	//for the friends list
+	//for the colleague list
 	var items = $('.colleagueList li').get();
 	items.sort(function(a,b){
  	 var keyA = $(a).text();
@@ -34,8 +34,8 @@ function sortfamilyList(){
 function sortList(){
 	var items = $('.alphaList li').get();
 	items.sort(function(a,b){
- 	 var keyA = $(a).text();
-  	var keyB = $(b).text();
+ 	 var keyA = $(a).text().toUpperCase();
+  	var keyB = $(b).text().toUpperCase();
  	 if (keyA < keyB) return -1;
  	 if (keyA > keyB) return 1;
   	return 0;
@@ -91,7 +91,6 @@ localStorage.setItem(userID+'fname',document.getElementById('txt-first-nameUP').
 localStorage.setItem(userID+'lname',document.getElementById('txt-last-nameUP').value);
 
 }
-
 
 
 function addContact() {
@@ -162,6 +161,23 @@ function addContact() {
 	var newMessage = document.createElement("option");
 	newMessage.setAttribute("value","message");	
 	var newMessageText = document.createTextNode("Message");
+	//create the notes "short" 
+	
+	
+	
+	var fnotesnewDiv4 = document.createElement("div");
+	fnotesnewDiv4.setAttribute("data-controltype","textarea");	
+	fnotesnewDiv4.setAttribute("class","ui-field-contain");
+	var fnotesnewLabel = document.createElement("label");
+	fnotesnewLabel.setAttribute("for","textarea1");
+	var fnotesnewlabelt = document.createTextNode("Notes on Connection:");
+	var fnotesnewtextarea = document.createElement("textarea");
+	fnotesnewtextarea.setAttribute("id","textarea200");	
+
+	//put the notes into the div
+	
+	
+	
 	//create the button
 	var newButton = document.createElement("input");
 	newButton.setAttribute("type","button");	
@@ -183,6 +199,15 @@ function addContact() {
 	var newPPP = document.createElement("p");
 	newPPP.id = name+"lines2";
 	var newPText = document.createTextNode("History");
+	//create the UL for the stuff here
+	var newhistoryList = document.createElement("ul");
+	newhistoryList.setAttribute("class","historyList");	
+	newhistoryList.setAttribute("data-role","listview");
+	newhistoryList.id=name+lastname+"historyList";	
+	newhistoryList.setAttribute("data-inset","true");	
+	newhistoryList.setAttribute("data-filter","true");	
+	newhistoryList.setAttribute("data-filter-placeholder","Search Connections...");	
+	newPPP.appendChild(newhistoryList);
 	
 	//creates a back button
 	var backbutton = document.createElement("a");
@@ -231,6 +256,10 @@ function addContact() {
 	//put pp in div7		
 	newPP.appendChild(newPPP);
 	//put history in p
+	//put in notes on connection here
+	fnotesnewLabel.appendChild(fnotesnewlabelt);
+	newDiv5.appendChild(fnotesnewLabel);
+	newDiv5.appendChild(fnotesnewtextarea);
 
 	newDiv7.appendChild(newPP);
 	newDiv6.appendChild(newDiv7);	
@@ -242,9 +271,72 @@ function addContact() {
 	newDiv4.appendChild(newPphone);
 	newPphone.appendChild(newTphone);
 	newDiv4.appendChild(newPnotes);
-	newPnotes.appendChild(newTnotes);		
+	newPnotes.appendChild(newTnotes);
 	
-//new contact	
+//make updating history
+		//making a new page for notes
+		var notesnewpage = document.getElementById("pages");
+		//make a new div
+		var notesnewDiv = document.createElement("div");
+		notesnewDiv.setAttribute("data-role","page");
+		notesnewDiv.setAttribute("id",name+lastname+"updatedhistory");
+		var notesnewDiv2 = document.createElement("div");
+		notesnewDiv2.setAttribute("data-theme","a");
+		notesnewDiv2.setAttribute("data-role","header");	
+		var notesnewHeader = document.createElement("h1");
+		notesnewHeader.setAttribute("class","ui-title");	
+		var notesnewHeaderText = document.createTextNode("CONNECTIONS");
+		notesnewHeader.appendChild(notesnewHeaderText);
+		var notesnewDiv3 = document.createElement("div");
+		notesnewDiv3.setAttribute("role","main");	
+		notesnewDiv3.setAttribute("class","ui-content");
+		var notesnewDiv4 = document.createElement("div");
+		notesnewDiv4.setAttribute("data-controltype","textblock");
+		//create p with text node "history" and new p with id = lines
+		var notesnewPP = document.createElement("p");
+		var notesnewPPP = document.createElement("p");
+		notesnewPPP.id = name+"lines2";
+		var notesnewPText = document.createTextNode("History");
+		//create the UL for the stuff here
+		var notesnewhistoryList = document.createElement("ul");
+		notesnewhistoryList.setAttribute("class","historyList");	
+		notesnewhistoryList.setAttribute("data-role","listview");
+		notesnewhistoryList.id=name+lastname+"notesnewhistoryList";	
+		notesnewhistoryList.setAttribute("data-inset","true");	
+		notesnewhistoryList.setAttribute("data-filter","true");	
+		notesnewhistoryList.setAttribute("data-filter-placeholder","Search Connections...");	
+		notesnewPPP.appendChild(notesnewhistoryList);
+		
+		
+		//create the button
+		var notesback = document.createElement("a");
+		notesback.setAttribute("href","#home");		
+		notesback.setAttribute("data-icon","arrow-l");
+		notesback.setAttribute("data-iconpos","left");	
+		notesback.setAttribute("class","ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left");
+		var notesbacktext = document.createTextNode("Back");					
+			
+					
+		//put stuff in 
+		//put p with id in history
+		notesnewPP.appendChild(notesnewPText);
+		//put pp in div7		
+		notesnewPP.appendChild(notesnewPPP);
+		//put history in p
+		notesnewDiv4.appendChild(notesnewPP);		
+		
+		notesnewpage.appendChild(notesnewDiv);
+		notesnewDiv.appendChild(notesnewDiv2);
+		notesnewDiv2.appendChild(notesnewHeader);
+		notesnewHeader.appendChild(notesnewHeaderText);
+		notesnewDiv.appendChild(notesnewDiv3);
+		notesnewDiv3.appendChild(notesnewDiv4);	
+		//the button appending
+		notesnewDiv2.appendChild(notesback);
+		notesback.appendChild(notesbacktext);
+			
+	
+//new contact
     var contactList = document.getElementById("contactList");  
     	//create a new list item	
         var newListItem = document.createElement("li");
@@ -252,12 +344,12 @@ function addContact() {
 		//create the ahref	
 		var newLink = document.createElement("a");
 		//set the link to #new-page
-		newLink.setAttribute("href","#"+name+lastname);
+		newLink.setAttribute("href","#"+name+lastname+"updatedhistory");
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
         //create the img put it in newLink
         var newPic = document.createElement("img");
-        newPic.setAttribute("src","5.png");
+        newPic.setAttribute("src","default.png");
         //put the image in the link
         newLink.appendChild(newPic);
 		//put the name in the link
@@ -265,7 +357,15 @@ function addContact() {
 		//put the link in the list
         newListItem.appendChild(newLink);
 		//put the list in the unordered list
-        contactList.appendChild(newListItem);        
+        contactList.appendChild(newListItem); 
+        /*newLink.onclick = function() { finalHistory() };  */
+        
+        //create the notes button
+		var anotes = document.createElement("a");
+		anotes.setAttribute("href","#"+name+lastname);
+		newListItem.appendChild(anotes);
+        
+             
         
 function test(){
 var value = document.getElementById(name+"options2").value;
@@ -281,41 +381,260 @@ var value = document.getElementById(name+"options2").value;
     	}
 	}
 var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
+var notesvalue = (date+time+suffix);
 	if (value == "call") {
-		//find where to put it
-		var history = document.getElementById(name+"lines2");
+		//making a new page for notes
+		var notesnewpage = document.getElementById("pages");
+		//make a new div
+		var notesnewDiv = document.createElement("div");
+		notesnewDiv.setAttribute("data-role","page");
+		notesnewDiv.setAttribute("id",value+notesvalue);
+		var notesnewDiv2 = document.createElement("div");
+		notesnewDiv2.setAttribute("data-theme","a");
+		notesnewDiv2.setAttribute("data-role","header");	
+		var notesnewHeader = document.createElement("h1");
+		notesnewHeader.setAttribute("class","ui-title");	
+		var notesnewHeaderText = document.createTextNode("CONNECTIONS");
+		notesnewHeader.appendChild(notesnewHeaderText);
+		var notesnewDiv3 = document.createElement("div");
+		notesnewDiv3.setAttribute("role","main");	
+		notesnewDiv3.setAttribute("class","ui-content");
+		var notesnewDiv4 = document.createElement("div");
+		notesnewDiv4.setAttribute("data-controltype","textarea");	
+		notesnewDiv4.setAttribute("class","ui-field-contain");
+		var notesnewLabel = document.createElement("label");
+		notesnewLabel.setAttribute("for","textarea1");
+		var notesnewlabelt = document.createTextNode("Notes on Connection:");
+		var notesnewtextarea = document.createElement("textarea");
+		notesnewtextarea.setAttribute("id",name+value+"textarea100");
+		//create the button
+		var notesback = document.createElement("a");
+		notesback.setAttribute("href","#"+name+lastname);		
+		notesback.setAttribute("data-icon","arrow-l");
+		notesback.setAttribute("data-iconpos","left");	
+		notesback.setAttribute("class","ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left");
+		var notesbacktext = document.createTextNode("Back");					
+			
+					
+		//put stuff in 
+		notesnewpage.appendChild(notesnewDiv);
+		notesnewDiv.appendChild(notesnewDiv2);
+		notesnewDiv2.appendChild(notesnewHeader);
+		notesnewHeader.appendChild(notesnewHeaderText);
+		notesnewDiv.appendChild(notesnewDiv3);
+		notesnewDiv3.appendChild(notesnewDiv4);
+		notesnewDiv4.appendChild(notesnewLabel);
+		notesnewLabel.appendChild(notesnewlabelt);
+		notesnewLabel.appendChild(notesnewtextarea);	
+		//the button appending
+		notesnewDiv2.appendChild(notesback);
+		notesback.appendChild(notesbacktext);
+		
+		//putting it into the history
+		var history = document.getElementById(name+lastname+"historyList");
 		//create a new text item
-		var newText = document.createTextNode("Called " + stamp);
+		var newListText = document.createTextNode("Called " + stamp);
+		var newText = document.createElement("a");
+		newText.setAttribute("href","#"+value+notesvalue);
+		newText.appendChild(newListText);
 		//create a new p item 
-		var newLine = document.createElement("p");
+		var newLine = document.createElement("li");
 		newLine.appendChild(newText);
 		history.appendChild(newLine);
+		
+		
+		
+		//putting it into updated history
+		var newhistory = document.getElementById(name+lastname+"notesnewhistoryList");
+		var finalnotes = document.getElementById("textarea200").value;
+		
+		//create a new text item
+		var notesnewListText = document.createTextNode("Called " + stamp + " Notes: "+finalnotes);
+		var notesnewText = document.createElement("p");
+		notesnewText.appendChild(notesnewListText);
+		//create a new p item 
+		var notesnewLine = document.createElement("li");
+		notesnewLine.appendChild(notesnewText);
+		newhistory.appendChild(notesnewLine);
+		
+		//create the notes button
+		/*var anotes = document.createElement("a");
+		anotes.setAttribute("href","#"+value+notesvalue);
+		var tnotes = document.createTextNode("  Notes");
+		anotes.appendChild(tnotes);
+		newLine.appendChild(anotes);*/
+			
+    	/*<ul class="historyList" data-role="listview" id ="historyList" data-inset="true" data-filter="true" data-filter-placeholder="Search Connections..." >  
+            <li data-theme="a">
+                <a href="#history" data-transition="slide">
+                Kim Kardashian
+                </a>
+            </li>                                             
+        </ul>*/
+		
+		
 	}		
 	if (value == "email") {
-		//find where to put it
-		var history = document.getElementById(name+"lines2");
+		//making a new page for notes
+		var notesnewpage = document.getElementById("pages");
+		//make a new div
+		var notesnewDiv = document.createElement("div");
+		notesnewDiv.setAttribute("data-role","page");
+		notesnewDiv.setAttribute("id",value+notesvalue);
+		var notesnewDiv2 = document.createElement("div");
+		notesnewDiv2.setAttribute("data-theme","a");
+		notesnewDiv2.setAttribute("data-role","header");	
+		var notesnewHeader = document.createElement("h1");
+		notesnewHeader.setAttribute("class","ui-title");	
+		var notesnewHeaderText = document.createTextNode("CONNECTIONS");
+		notesnewHeader.appendChild(notesnewHeaderText);
+		var notesnewDiv3 = document.createElement("div");
+		notesnewDiv3.setAttribute("role","main");	
+		notesnewDiv3.setAttribute("class","ui-content");
+		var notesnewDiv4 = document.createElement("div");
+		notesnewDiv4.setAttribute("data-controltype","textarea");	
+		notesnewDiv4.setAttribute("class","ui-field-contain");
+		var notesnewLabel = document.createElement("label");
+		notesnewLabel.setAttribute("for","textarea1");
+		var notesnewlabelt = document.createTextNode("Notes on Connection:");
+		var notesnewtextarea = document.createElement("textarea");
+		notesnewtextarea.setAttribute("id","textarea1");
+		//create the button
+		var notesback = document.createElement("a");
+		notesback.setAttribute("href","#"+name+lastname);		
+		notesback.setAttribute("data-icon","arrow-l");
+		notesback.setAttribute("data-iconpos","left");	
+		notesback.setAttribute("class","ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left");
+		var notesbacktext = document.createTextNode("Back");					
+			
+					
+		//put stuff in 
+		notesnewpage.appendChild(notesnewDiv);
+		notesnewDiv.appendChild(notesnewDiv2);
+		notesnewDiv2.appendChild(notesnewHeader);
+		notesnewHeader.appendChild(notesnewHeaderText);
+		notesnewDiv.appendChild(notesnewDiv3);
+		notesnewDiv3.appendChild(notesnewDiv4);
+		notesnewDiv4.appendChild(notesnewLabel);
+		notesnewLabel.appendChild(notesnewlabelt);
+		notesnewLabel.appendChild(notesnewtextarea);	
+		//the button appending
+		notesnewDiv2.appendChild(notesback);
+		notesback.appendChild(notesbacktext);
+		
+		//putting it into the history
+		var history = document.getElementById(name+lastname+"historyList");
 		//create a new text item
-		var newText = document.createTextNode("Emailed " + stamp);
+		var newListText = document.createTextNode("Emailed " + stamp);
+		var newText = document.createElement("a");
+		newText.setAttribute("href","#"+value+notesvalue);
+		newText.appendChild(newListText);
 		//create a new p item 
-		var newLine = document.createElement("p");
-		//put the text in the p
+		var newLine = document.createElement("li");
 		newLine.appendChild(newText);
 		history.appendChild(newLine);
-	}
-		if (value == "message") {
-		//find where to put it
-		var history = document.getElementById(name+"lines2");
+		
+		//putting it into updated history
+		var newhistory = document.getElementById(name+lastname+"notesnewhistoryList");
+		var finalnotes = document.getElementById("textarea200").value;
+		
 		//create a new text item
-		var newText = document.createTextNode("Messaged " + stamp);
+		var notesnewListText = document.createTextNode("Emailed " + stamp + " Notes: "+finalnotes);
+		var notesnewText = document.createElement("p");
+		notesnewText.appendChild(notesnewListText);
 		//create a new p item 
-		var newLine = document.createElement("p");
-		//put the text in the p
+		var notesnewLine = document.createElement("li");
+		notesnewLine.appendChild(notesnewText);
+		newhistory.appendChild(notesnewLine);
+		
+	}
+	if (value == "message") {
+		//making a new page for notes
+		var notesnewpage = document.getElementById("pages");
+		//make a new div
+		var notesnewDiv = document.createElement("div");
+		notesnewDiv.setAttribute("data-role","page");
+		notesnewDiv.setAttribute("id",value+notesvalue);
+		var notesnewDiv2 = document.createElement("div");
+		notesnewDiv2.setAttribute("data-theme","a");
+		notesnewDiv2.setAttribute("data-role","header");	
+		var notesnewHeader = document.createElement("h1");
+		notesnewHeader.setAttribute("class","ui-title");	
+		var notesnewHeaderText = document.createTextNode("CONNECTIONS");
+		notesnewHeader.appendChild(notesnewHeaderText);
+		var notesnewDiv3 = document.createElement("div");
+		notesnewDiv3.setAttribute("role","main");	
+		notesnewDiv3.setAttribute("class","ui-content");
+		var notesnewDiv4 = document.createElement("div");
+		notesnewDiv4.setAttribute("data-controltype","textarea");	
+		notesnewDiv4.setAttribute("class","ui-field-contain");
+		var notesnewLabel = document.createElement("label");
+		notesnewLabel.setAttribute("for","textarea1");
+		var notesnewlabelt = document.createTextNode("Notes on Connection:");
+		var notesnewtextarea = document.createElement("textarea");
+		notesnewtextarea.setAttribute("id","textarea1");
+		//create the button
+		var notesback = document.createElement("a");
+		notesback.setAttribute("href","#"+name+lastname);		
+		notesback.setAttribute("data-icon","arrow-l");
+		notesback.setAttribute("data-iconpos","left");	
+		notesback.setAttribute("class","ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left");
+		var notesbacktext = document.createTextNode("Back");					
+			
+					
+		//put stuff in 
+		notesnewpage.appendChild(notesnewDiv);
+		notesnewDiv.appendChild(notesnewDiv2);
+		notesnewDiv2.appendChild(notesnewHeader);
+		notesnewHeader.appendChild(notesnewHeaderText);
+		notesnewDiv.appendChild(notesnewDiv3);
+		notesnewDiv3.appendChild(notesnewDiv4);
+		notesnewDiv4.appendChild(notesnewLabel);
+		notesnewLabel.appendChild(notesnewlabelt);
+		notesnewLabel.appendChild(notesnewtextarea);	
+		//the button appending
+		notesnewDiv2.appendChild(notesback);
+		notesback.appendChild(notesbacktext);
+		
+		//putting it into the history
+		var history = document.getElementById(name+lastname+"historyList");
+		//create a new text item
+		var newListText = document.createTextNode("Messaged " + stamp);
+		var newText = document.createElement("a");
+		newText.setAttribute("href","#"+value+notesvalue);
+		newText.appendChild(newListText);
+		//create a new p item 
+		var newLine = document.createElement("li");
 		newLine.appendChild(newText);
 		history.appendChild(newLine);
+		
+		//putting it into updated history
+		var newhistory = document.getElementById(name+lastname+"notesnewhistoryList");
+		var finalnotes = document.getElementById("textarea200").value;
+		
+		//create a new text item
+		var notesnewListText = document.createTextNode("Messaged " + stamp + " Notes: "+finalnotes);
+		var notesnewText = document.createElement("p");
+		notesnewText.appendChild(notesnewListText);
+		//create a new p item 
+		var notesnewLine = document.createElement("li");
+		notesnewLine.appendChild(notesnewText);
+		newhistory.appendChild(notesnewLine);
 	}
-}        
 }
 
+
+/*function finalHistory(){
+	//need to make the text from notes & also put it into the notesnewtext, need to put it somewhere else (afterwards)
+	var finalnotes = document.getElementById("textarea100").value;
+	var putfinal = document.getElementById("coke");
+	putfinal.appendChild(finalnotes);
+}*/
+}        
+
+
+
+/*//remove this later
 function updateHistory(){
 var value = document.getElementById("options").value;
   var now = new Date();
@@ -332,8 +651,7 @@ var value = document.getElementById("options").value;
 var stamp = (date.join("/") + " " + time.join(":") + " " + suffix);
 var notesvalue = (date+time+suffix);
 	if (value == "call") {
-			
-		//making a new page called onion for now
+		//making a new page for notes
 		var notesnewpage = document.getElementById("pages");
 		//make a new div
 		var notesnewDiv = document.createElement("div");
@@ -380,7 +698,7 @@ var notesvalue = (date+time+suffix);
 		notesnewDiv2.appendChild(notesback);
 		notesback.appendChild(notesbacktext);	
 		
-		//find where to put it
+		//putting it into the history
 		var history = document.getElementById("lines");
 		//create a new text item
 		var newText = document.createTextNode("Called " + stamp);
@@ -391,26 +709,9 @@ var notesvalue = (date+time+suffix);
 		//create the notes button
 		var anotes = document.createElement("a");
 		anotes.setAttribute("href","#"+value+notesvalue);
-		/*anotes.setAttribute("data-icon","edit");
-		anotes.setAttribute("data-rel","popup");		
-		anotes.setAttribute("data-iconpos","left");*/
 		var tnotes = document.createTextNode("  Notes");
 		anotes.appendChild(tnotes);
-		newLine.appendChild(anotes);	
-
-		
-		//create the popup
-		/*var dnotes = document.createElement("div");
-		dnotes.setAttribute("data-role","popup");
-		dnotes.id = "onions"
-		var pnotes = document.createElement("p");
-		var tnotes2 = document.createTextNode("Example popup dudes");
-		//push tnotes2 into pnotes
-		pnotes.appendChild(tnotes2);
-		//push pnotes into dnotes
-		dnotes.appendChild(pnotes);
-		//push dnotes into newline
-       	newLine.appendChild(dnotes);*/			
+		newLine.appendChild(anotes);			
 	}		
 	if (value == "email") {
 		//find where to put it
@@ -437,10 +738,11 @@ var notesvalue = (date+time+suffix);
 				
 }
 
+//also remove this
 function refresh(){
 	var refresh = document.getElementById('contactList');
 	//make it do something
-}
+}*/
 
 function group(){
 var value = document.getElementById("groups").value;
@@ -502,4 +804,3 @@ var lastname = document.getElementById('textinput6').value;
    }                                       
     
 }
-
