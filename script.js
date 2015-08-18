@@ -1,3 +1,4 @@
+ var x = Math.floor((Math.random() * 24) + 1);
 
 function sortcolleagueList(){
 	//for the colleague list
@@ -350,7 +351,6 @@ function addContact() {
         var newPic = document.createElement("img");
         
         //random pic from 1-24
-        var x = Math.floor((Math.random() * 24) + 1);
         newPic.setAttribute("src",x+".png");
         //put the image in the link
         newLink.appendChild(newPic);
@@ -816,7 +816,7 @@ var lastname = document.getElementById('textinput6').value;
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
         var newPic = document.createElement("img");
-        newPic.setAttribute("src","default.png");
+        newPic.setAttribute("src",x+".png");
         //put the image in the link
         newLink.appendChild(newPic);
 		//put the name in the link
@@ -839,7 +839,7 @@ var lastname = document.getElementById('textinput6').value;
         var newName = document.createTextNode(name+" "+lastname);
 		//put the name in the link
 		var newPic = document.createElement("img");
-        newPic.setAttribute("src","default.png");
+        newPic.setAttribute("src",x+".png");
         //put the image in the link
         newLink.appendChild(newPic);
 		newLink.appendChild(newName);
@@ -860,7 +860,7 @@ var lastname = document.getElementById('textinput6').value;
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
         var newPic = document.createElement("img");
-        newPic.setAttribute("src","default.png");
+        newPic.setAttribute("src",x+".png");
         //put the image in the link
         newLink.appendChild(newPic);
 		//put the name in the link
