@@ -1,4 +1,4 @@
- var x = Math.floor((Math.random() * 24) + 1);
+var x;
 
 function sortcolleagueList(){
 	//for the colleague list
@@ -350,6 +350,7 @@ function addContact() {
         //create the img put it in newLink
         var newPic = document.createElement("img");
         
+        x = Math.floor((Math.random() * 24) + 1);
         //random pic from 1-24
         newPic.setAttribute("src",x+".png");
         //put the image in the link
@@ -405,7 +406,7 @@ var notesvalue = (date+time+suffix);
 		notesnewDiv4.setAttribute("data-controltype","textarea");	
 		var notesnewLabel = document.createElement("label");
 		notesnewLabel.setAttribute("for","textarea1");
-		var notesnewlabelt = document.createTextNode("Notes on Connection:");
+		var notesnewlabelt = document.createTextNode("Short Notes About Connection:");
 		var notesnewtextarea = document.createElement("textarea");
 		notesnewtextarea.setAttribute("id",name+value+"textarea100");
 		
@@ -550,12 +551,49 @@ var notesvalue = (date+time+suffix);
 		notesnewDiv3.setAttribute("class","ui-content");
 		var notesnewDiv4 = document.createElement("div");
 		notesnewDiv4.setAttribute("data-controltype","textarea");	
-		notesnewDiv4.setAttribute("class","ui-field-contain");
 		var notesnewLabel = document.createElement("label");
 		notesnewLabel.setAttribute("for","textarea1");
-		var notesnewlabelt = document.createTextNode("Notes on Connection:");
+		var notesnewlabelt = document.createTextNode("Short Notes About Connection:");
 		var notesnewtextarea = document.createElement("textarea");
-		notesnewtextarea.setAttribute("id","textarea1");
+		notesnewtextarea.setAttribute("id",name+value+"textarea100");
+		
+		
+		
+		//for the date
+		var datediv = document.createElement("div");
+		datediv.setAttribute("class","ui-field-contain");	
+		datediv.setAttribute("data-controltype","dateinput");
+		var dateLabel = document.createElement("label");
+		dateLabel.setAttribute("for","dateinput1");
+		var datelabelt = document.createTextNode("Date:");
+		var datearea = document.createElement("input");
+		datearea.setAttribute("id","dateinput1");
+		datearea.setAttribute("type","date");
+		datearea.setAttribute("placeholder","");
+		
+		//for the time
+		var timediv = document.createElement("div");
+		timediv.setAttribute("class","ui-field-contain");	
+		timediv.setAttribute("data-controltype","dateinput");
+		var timeLabel = document.createElement("label");
+		timeLabel.setAttribute("for","dateinput1");
+		var timelabelt = document.createTextNode("Time:");
+		var timearea = document.createElement("input");
+		timearea.setAttribute("id","dateinput1");
+		timearea.setAttribute("type","date");
+		timearea.setAttribute("placeholder","");
+		
+		
+		notesnewDiv3.appendChild(datediv);
+		dateLabel.appendChild(datelabelt);
+		datediv.appendChild(dateLabel);						
+		datediv.appendChild(datearea);
+
+		notesnewDiv3.appendChild(timediv);
+		timeLabel.appendChild(timelabelt);
+		timediv.appendChild(timeLabel);						
+		timediv.appendChild(timearea);
+		
 		//create the button
 		var notesback = document.createElement("a");
 		notesback.setAttribute("href","#"+name+lastname);		
@@ -563,6 +601,8 @@ var notesvalue = (date+time+suffix);
 		notesback.setAttribute("data-iconpos","left");	
 		notesback.setAttribute("class","ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left");
 		var notesbacktext = document.createTextNode("Back");					
+	
+		
 			
 					
 		//put stuff in 
@@ -624,19 +664,94 @@ var notesvalue = (date+time+suffix);
 		notesnewDiv3.setAttribute("class","ui-content");
 		var notesnewDiv4 = document.createElement("div");
 		notesnewDiv4.setAttribute("data-controltype","textarea");	
-		notesnewDiv4.setAttribute("class","ui-field-contain");
 		var notesnewLabel = document.createElement("label");
 		notesnewLabel.setAttribute("for","textarea1");
-		var notesnewlabelt = document.createTextNode("Notes on Connection:");
+		var notesnewlabelt = document.createTextNode("Short Notes About Connection:");
 		var notesnewtextarea = document.createElement("textarea");
-		notesnewtextarea.setAttribute("id","textarea1");
+		notesnewtextarea.setAttribute("id",name+value+"textarea100");
+		
+		
+		
+		//for the date
+		var datediv = document.createElement("div");
+		datediv.setAttribute("class","ui-field-contain");	
+		datediv.setAttribute("data-controltype","dateinput");
+		var dateLabel = document.createElement("label");
+		dateLabel.setAttribute("for","dateinput1");
+		var datelabelt = document.createTextNode("Date:");
+		var datearea = document.createElement("input");
+		datearea.setAttribute("id","dateinput1");
+		datearea.setAttribute("type","date");
+		datearea.setAttribute("placeholder","");
+		
+		//for the time
+		var timediv = document.createElement("div");
+		timediv.setAttribute("class","ui-field-contain");	
+		timediv.setAttribute("data-controltype","dateinput");
+		var timeLabel = document.createElement("label");
+		timeLabel.setAttribute("for","dateinput1");
+		var timelabelt = document.createTextNode("Time:");
+		var timearea = document.createElement("input");
+		timearea.setAttribute("id","dateinput1");
+		timearea.setAttribute("type","date");
+		timearea.setAttribute("placeholder","");
+		
+		
+		notesnewDiv3.appendChild(datediv);
+		dateLabel.appendChild(datelabelt);
+		datediv.appendChild(dateLabel);						
+		datediv.appendChild(datearea);
+
+		notesnewDiv3.appendChild(timediv);
+		timeLabel.appendChild(timelabelt);
+		timediv.appendChild(timeLabel);						
+		timediv.appendChild(timearea);
+		
 		//create the button
 		var notesback = document.createElement("a");
 		notesback.setAttribute("href","#"+name+lastname);		
 		notesback.setAttribute("data-icon","arrow-l");
 		notesback.setAttribute("data-iconpos","left");	
 		notesback.setAttribute("class","ui-btn ui-btn-left ui-icon-arrow-l ui-btn-icon-left");
-		var notesbacktext = document.createTextNode("Back");					
+		var notesbacktext = document.createTextNode("Back");	
+		
+		//for the date
+		var datediv = document.createElement("div");
+		datediv.setAttribute("class","ui-field-contain");	
+		datediv.setAttribute("data-controltype","dateinput");
+		var dateLabel = document.createElement("label");
+		dateLabel.setAttribute("for","dateinput1");
+		var datelabelt = document.createTextNode("Date:");
+		var datearea = document.createElement("input");
+		datearea.setAttribute("id","dateinput1");
+		datearea.setAttribute("type","date");
+		datearea.setAttribute("placeholder","");
+		
+		//for the time
+		var timediv = document.createElement("div");
+		timediv.setAttribute("class","ui-field-contain");	
+		timediv.setAttribute("data-controltype","dateinput");
+		var timeLabel = document.createElement("label");
+		timeLabel.setAttribute("for","dateinput1");
+		var timelabelt = document.createTextNode("Time:");
+		var timearea = document.createElement("input");
+		timearea.setAttribute("id","dateinput1");
+		timearea.setAttribute("type","date");
+		timearea.setAttribute("placeholder","");
+		
+		
+		notesnewDiv3.appendChild(datediv);
+		dateLabel.appendChild(datelabelt);
+		datediv.appendChild(dateLabel);						
+		datediv.appendChild(datearea);
+
+		notesnewDiv3.appendChild(timediv);
+		timeLabel.appendChild(timelabelt);
+		timediv.appendChild(timeLabel);						
+		timediv.appendChild(timearea);
+		
+		
+						
 			
 					
 		//put stuff in 
