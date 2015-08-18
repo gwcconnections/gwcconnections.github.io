@@ -348,7 +348,10 @@ function addContact() {
         var newName = document.createTextNode(name+" "+lastname);
         //create the img put it in newLink
         var newPic = document.createElement("img");
-        newPic.setAttribute("src","default.png");
+        
+        //random pic from 1-24
+        var x = Math.floor((Math.random() * 24) + 1);
+        newPic.setAttribute("src",x+".png");
         //put the image in the link
         newLink.appendChild(newPic);
 		//put the name in the link
@@ -400,12 +403,13 @@ var notesvalue = (date+time+suffix);
 		notesnewDiv3.setAttribute("class","ui-content");
 		var notesnewDiv4 = document.createElement("div");
 		notesnewDiv4.setAttribute("data-controltype","textarea");	
-		notesnewDiv4.setAttribute("class","ui-field-contain");
 		var notesnewLabel = document.createElement("label");
 		notesnewLabel.setAttribute("for","textarea1");
 		var notesnewlabelt = document.createTextNode("Notes on Connection:");
 		var notesnewtextarea = document.createElement("textarea");
 		notesnewtextarea.setAttribute("id",name+value+"textarea100");
+		
+		
 		
 		//for the date
 		var datediv = document.createElement("div");
@@ -419,12 +423,29 @@ var notesvalue = (date+time+suffix);
 		datearea.setAttribute("type","date");
 		datearea.setAttribute("placeholder","");
 		
+		//for the time
+		var timediv = document.createElement("div");
+		timediv.setAttribute("class","ui-field-contain");	
+		timediv.setAttribute("data-controltype","dateinput");
+		var timeLabel = document.createElement("label");
+		timeLabel.setAttribute("for","dateinput1");
+		var timelabelt = document.createTextNode("Time:");
+		var timearea = document.createElement("input");
+		timearea.setAttribute("id","dateinput1");
+		timearea.setAttribute("type","date");
+		timearea.setAttribute("placeholder","");
+		
 		
 		notesnewDiv3.appendChild(datediv);
 		dateLabel.appendChild(datelabelt);
 		datediv.appendChild(dateLabel);						
 		datediv.appendChild(datearea);
 
+		notesnewDiv3.appendChild(timediv);
+		timeLabel.appendChild(timelabelt);
+		timediv.appendChild(timeLabel);						
+		timediv.appendChild(timearea);
+		
 		
 		
 				
