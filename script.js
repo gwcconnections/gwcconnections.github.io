@@ -255,6 +255,11 @@ function addContact() {
 		newLink.setAttribute("href","#"+name+lastname);
 		//create the text	
         var newName = document.createTextNode(name+" "+lastname);
+        //create the img put it in newLink
+        var newPic = document.createElement("img");
+        newPic.setAttribute("src","5.png");
+        //put the image in the link
+        newLink.appendChild(newPic);
 		//put the name in the link
 		newLink.appendChild(newName);
 		//put the link in the list
